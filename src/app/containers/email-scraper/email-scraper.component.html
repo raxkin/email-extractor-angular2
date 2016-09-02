@@ -1,0 +1,18 @@
+<div class="row center-xs email-scraper-container">
+  <div class="col-xs-6">
+    <form class="row" (submit)="onFindEmails()">
+      <input type="text" [(ngModel)]="config.url" name="url" placeholder="Url" class="col-xs-10 title">
+      <button type="submit" class="btn-light">
+        Find
+      </button>
+
+      <div class="checkbox">
+        <label>No repeat <input type="checkbox" [(ngModel)]="config.noRepeat" name="noRepeat"></label>
+      </div>
+    </form>
+    <pre *ngFor="let email of result">{{email}}</pre>
+    <div>
+      <span class="text-error">{{showError}}</span>
+    </div>
+  </div>
+</div>
