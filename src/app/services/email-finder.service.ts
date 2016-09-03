@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
-import {Response, Http} from "@angular/http";
+import {Response, Http, Headers} from "@angular/http";
 import {Observable} from "rxjs/Rx";
 
 @Injectable()
 export class EmailFinderService {
   constructor(private http: Http) {
   }
+
+  apiURL = 'http://localhost:8080';
 
   //Regex to extract emails strings from a string
   private extractEmails(response: Response): Array<string> {
@@ -40,7 +42,7 @@ export class EmailFinderService {
 
   //Get the requested website and extract all the emails texts from the html
   getEmails(url: string, noRepeat: boolean): Observable<any> {
-    return this.http.get(url)
+    return this.http.get(this.apiURL + '/gethtml?url=' + url)
       .map(this.checkForError)
       .catch(err => Observable.throw(err))
       .map(this.extractEmails)
