@@ -7,7 +7,7 @@ export class EmailFinderService {
   constructor(private http: Http) {
   }
 
-  apiURL = 'http://localhost:8080';
+  apiURL = 'http://emailscraper.raxkin.com:8080';
 
   //Regex to extract emails strings from a string
   private extractEmails(response: Response): Array<string> {

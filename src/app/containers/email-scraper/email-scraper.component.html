@@ -10,9 +10,12 @@
         <label>No repeat <input type="checkbox" [(ngModel)]="config.noRepeat" name="noRepeat"></label>
       </div>
     </form>
-    <pre *ngFor="let email of result">{{email}}</pre>
+    <div *ngIf="!loading">
+      <pre *ngFor="let email of result">{{email}}</pre>
+    </div>
     <div>
-      <span class="text-error">{{showError}}</span>
+      <i class="fa fa-circle-o-notch fa-spin" style="font-size:24px" *ngIf="loading"></i>
+      <span class="text-error" *ngIf="!loading">{{showError}}</span>
     </div>
   </div>
 </div>
